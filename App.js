@@ -13,11 +13,17 @@ export default function App() {
     setUserNumber(selectedNumber);
   }
 
+
   const gameoverHandler = (rounds) => {
 
     setGuessRounds(rounds);
    
   }
+
+  const newGameHandler = () => {
+    setGuessRounds(0);
+    setUserNumber(null);
+}
 
   let content = <StartGameScreen  onStartGame={startGameHandler}/> ;
 
@@ -27,7 +33,7 @@ export default function App() {
   else if(guessRounds > 0){
     console.log("onGameOver  guessRounds "+guessRounds );
 
-    content = <GameOver tries={guessRounds}/>
+    content = <GameOver tries={guessRounds} userNumber={userNumber} onRestart={newGameHandler}/>
   }
                 
   
